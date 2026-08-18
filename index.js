@@ -1,5 +1,5 @@
 import express from "express";
-import { readData } from "./utils/readData.js";
+import { readData } from "./src/repository/readData.js";
 import router from "./src/route/app.js";
 
 const app = express();
