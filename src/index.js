@@ -1,6 +1,6 @@
 import express from "express";
-import { readData } from "./src/repository/readData.js";
-import router from "./src/route/app.js";
+import { readData } from "./repository/readData.js";
+import router from "./route/route.js";
 
 const app = express();
 app.use(express.json());
