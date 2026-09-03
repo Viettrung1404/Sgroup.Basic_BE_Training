@@ -19,14 +19,22 @@
       "age": 28
     },
     {
+      "id": 4,
       "name": "Bob",
       "email": "bob@example.com",
       "age": 30
     },
     {
+      "id": 5,
       "name": "Charlie",
       "email": "charlie@example.com",
       "age": 22
+    },
+    {
+      "id": 6,
+      "name": "Trung",
+      "email": "nguyenviettrung2005@gmail.com",
+      "age": 25
     }
   ]
 }
