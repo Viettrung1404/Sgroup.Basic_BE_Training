@@ -14,20 +14,25 @@ export const findAll = async ({sortBy = "id", order = "asc"}) => {
   const result = await pool.query(`SELECT * FROM users ORDER BY ${sortBy} ${order}`);
   return result.rows;
 }
-export const findById = async (id) => {
-  const result = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
-  return result.rows[0] || null;
-};
-
 export const findByEmail = async (email) => {
   const result = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
   return result.rows[0] || null;
 };
 
-export const create = async ({ name, email, age }) => {
+export const findById = async (id) => {
   const result = await pool.query(
-    "INSERT INTO users (name, email, age) VALUES ($1, $2, $3) RETURNING *",
-    [name, email, age]
+    "SELECT id, name, email, age, role, created_at FROM users WHERE id = $1",
+    [id]
+  );
+  return result.rows[0] || null;
+};
+
+export const create = async ({ name, email, age, password, role = 'MEMBER' }) => {
+  const result = await pool.query(
+    `INSERT INTO users (name, email, age, password, role)
+     VALUES ($1, $2, $3, $4, $5)
+     RETURNING id, name, email, age, role, created_at`,
+    [name, email, age, password, role]
   );
   return result.rows[0];
 };
